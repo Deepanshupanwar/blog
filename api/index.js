@@ -42,7 +42,13 @@ app.post('/api/register', async(req,res)=>{
         const userDoc= await User.create({
             username, 
             password: bcrypt.hashSync(password,salt),});
-        res.json(userDoc);
+      jwt.sign({username,id:userDoc.id}, secret, {}, (err, token)=>{
+            if(err){
+                throw err;
+            }
+        res.cookie('token',token).json(userDoc);
+      })
+        
     }
     catch(e){
         res.status(400).json(e);
