@@ -31,7 +31,7 @@ cloudinary.config({
   api_secret: process.env.API_SECRET
 });
 
-module.exports = cloudinary;
+
 
 // REGISTER START
 app.post('/api/register', async(req,res)=>{
