@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState} from "react";
-import { Link } from "react-router-dom";
+import { Navigate ,Link } from "react-router-dom";
 import { userContext } from "./userContext";
 
 export default function Header(){
  
   const {userInfo,setUserInfo} =useContext(userContext);
   const [search, setSearch]= useState('');
+  const [redirect, setRedirect] =useStater(false);
   useEffect(()=>{
     fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/profile',{
       credentials: 'include',
@@ -22,9 +23,15 @@ export default function Header(){
       credentials: 'include',
       method: 'POST',
     });
-    setUserInfo(null)
+    setUserInfo(null);
+    setRedirect(true);
   }
   const username = userInfo?.username ;
+
+ if(redirect)
+ {
+  <Navigate to={'/}/>
+ }
 
     return(
         <header>
