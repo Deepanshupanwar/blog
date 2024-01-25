@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const cookieparser = require('cookie-parser');
 const uploader = require("./models/multer");
-const cloudinary = require("./models/cloudinary");
+
 require('dotenv').config();
 
 
@@ -22,12 +22,16 @@ app.use('/uploads',express.static(__dirname+'/uploads'));
 
 
 
-//test start
-app.post('/api/', (req,res)=>{
-    console.log("test");
-    res.json('ok');
-})
-//test end
+const cloudinary = require('cloudinary');
+
+
+cloudinary.config({
+  cloud_name: 'ddxsmyfve',
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
+
+module.exports = cloudinary;
 
 // REGISTER START
 app.post('/api/register', async(req,res)=>{
