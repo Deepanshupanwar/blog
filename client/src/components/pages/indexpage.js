@@ -8,7 +8,7 @@ export default function IndexPage(){
     const {userInfo,setUserInfo} = useContext(userContext);
 
     useEffect(()=>{
-        fetch('http://localhost:4000/post').then(response=>{
+        fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/post').then(response=>{
             response.json().then(posts=>{
                setPosts(posts);
                console.log(posts);
@@ -18,7 +18,7 @@ export default function IndexPage(){
 
     if(userInfo &&userInfo.clicked)
     {
-      fetch(`http://localhost:4000/post/search/?query=${userInfo.search}`).then(response=>{
+      fetch(`https://iblog-deepanshus-projects-b59175f2.vercel.app/api/search/?query=${userInfo.search}`).then(response=>{
         response.json().then(posts=>{
           setPosts(posts);
        });
