@@ -22,7 +22,12 @@ app.use('/uploads',express.static(__dirname+'/uploads'));
 
 
 
-
+//test start
+app.post('/', (req,res)=>{
+    console.log("test");
+    res.json('ok');
+})
+//test end
 
 // REGISTER START
 app.post('/register', async(req,res)=>{
