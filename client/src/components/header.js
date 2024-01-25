@@ -7,7 +7,7 @@ export default function Header(){
   const {userInfo,setUserInfo} =useContext(userContext);
   const [search, setSearch]= useState('');
   useEffect(()=>{
-    fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/profile',{
+    fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api:4000/profile',{
       credentials: 'include',
     }).then(response=>{
       response.json().then(userInfo=>{
@@ -18,7 +18,7 @@ export default function Header(){
 
   function logout(ev){
     ev.preventDefault();
-    fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/logout',{
+    fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api:4000/logout',{
       credentials: 'include',
       method: 'POST',
     });
