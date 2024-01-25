@@ -29,7 +29,7 @@ export default function Header(){
   const username = userInfo?.username ;
 
  if(redirect){
-        return <Navigate to={'/'}/>
+       <Navigate to={'/'}/>
     }
 
     return(
