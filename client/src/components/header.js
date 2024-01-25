@@ -28,9 +28,7 @@ export default function Header(){
   }
   const username = userInfo?.username ;
 
- if(redirect){
-       <Navigate to={'/'}/>
-    }
+
 
     return(
         <header>
@@ -64,6 +62,9 @@ export default function Header(){
           )}
           </div>
         </nav>
+{redirect &&(
+       <Navigate to={'/'}/>
+ )}
       </header> 
     );
 }
