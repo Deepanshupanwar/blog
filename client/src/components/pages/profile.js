@@ -6,7 +6,7 @@ export default function Profile(){
     const {id} = useParams();
     const [posts, setPosts] = useState([]);
     useEffect( ()=>{
-         fetch(`https://iblog-deepanshus-projects-b59175f2.vercel.app/api/profile/${id}`).then(response =>{
+         fetch(`https://iblog-deepanshus-projects-b59175f2.vercel.app/api:4000/profile/${id}`).then(response =>{
             response.json().then(posts=>{
                 setPosts(posts)
             })
