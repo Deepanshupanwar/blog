@@ -23,14 +23,14 @@ app.use('/uploads',express.static(__dirname+'/uploads'));
 
 
 //test start
-app.post('/', (req,res)=>{
+app.post('/api/', (req,res)=>{
     console.log("test");
     res.json('ok');
 })
 //test end
 
 // REGISTER START
-app.post('/register', async(req,res)=>{
+app.post('/api/register', async(req,res)=>{
     mongoose.connect(process.env.DATABASE_URL);
     const {username, password}= req.body;
 
@@ -50,7 +50,7 @@ app.post('/register', async(req,res)=>{
 
 // LOGIN START
 
-app.post('/login', async(req, res)=>{
+app.post('/api/login', async(req, res)=>{
     mongoose.connect(process.env.DATABASE_URL);
     const {username, password} =req.body;
 
@@ -76,7 +76,7 @@ app.post('/login', async(req, res)=>{
 
 // TOKEN VAILDATOR START
 
-app.get('/profile',(req,res)=>{
+app.get('/api/profile',(req,res)=>{
     mongoose.connect(process.env.DATABASE_URL);
     const {token} = req.cookies;
     jwt.verify(token, secret,{},(err,info)=>{
@@ -94,7 +94,7 @@ app.get('/profile',(req,res)=>{
 
 //LOGOUT START
 
-app.post('/logout',(req,res)=>{
+app.post('/api/logout',(req,res)=>{
     res.cookie('token','').json('ok');
 })
 
@@ -103,7 +103,7 @@ app.post('/logout',(req,res)=>{
 
 //SUBMIT POST START
 
-app.post('/post', uploader.single('file'), async (req,res)=>{
+app.post('/api/post', uploader.single('file'), async (req,res)=>{
     
     mongoose.connect(process.env.DATABASE_URL);
     const {token} = req.cookies;
@@ -131,7 +131,7 @@ app.post('/post', uploader.single('file'), async (req,res)=>{
 
 //GET POSTS START
 
-app.get('/post', async (req,res)=>{
+app.get('/api/post', async (req,res)=>{
     mongoose.connect(process.env.DATABASE_URL);
     res.json(await Post.find().populate('author',['username']).sort({createdAt:-1}).limit(20));
 })
@@ -140,7 +140,7 @@ app.get('/post', async (req,res)=>{
 
 //SEARCH POSTS START
 
-app.get('/post/search', async (req,res)=>{
+app.get('/api/post/search', async (req,res)=>{
 
     mongoose.connect(process.env.DATABASE_URL);
     if(req.query.query.length===0)
@@ -157,7 +157,7 @@ app.get('/post/search', async (req,res)=>{
 
 //GET POST START
 
-app.get('/post/:id', async(req, res)=>{
+app.get('/api/post/:id', async(req, res)=>{
     mongoose.connect(process.env.DATABASE_URL);
     const {id} = req.params;
     res.json(await Post.findById(id).populate('author',['username']))
@@ -167,7 +167,7 @@ app.get('/post/:id', async(req, res)=>{
 
 //GET PROFILE START
 
-app.get('/profile/:id' , async(req, res)=>{
+app.get('/api/profile/:id' , async(req, res)=>{
     mongoose.connect(process.env.DATABASE_URL);
     const {id} = req.params;
     res.json(await Post.find({author: id}).populate('author',['username']))
@@ -178,7 +178,7 @@ app.get('/profile/:id' , async(req, res)=>{
 
 //EDIT POST START
 
-app.put('/post/', uploader.single('file'), async(req, res)=>{
+app.put('/api/post/', uploader.single('file'), async(req, res)=>{
     mongoose.connect(process.env.DATABASE_URL);
     let newpath=null
     if(req.file){
@@ -213,7 +213,7 @@ app.put('/post/', uploader.single('file'), async(req, res)=>{
 
 //DELETE POST START
 
-app.delete('/delete/:id', async(req,res)=>{
+app.delete('/api/delete/:id', async(req,res)=>{
     mongoose.connect(process.env.DATABASE_URL);
     const {id}= req.params;
     const {token} = req.cookies;
