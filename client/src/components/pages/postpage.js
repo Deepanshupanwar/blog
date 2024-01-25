@@ -9,7 +9,7 @@ export default function PostPage(){
     const {userInfo} = useContext(userContext);
     const {id} = useParams();
     useEffect(()=>{
-        fetch(`http://localhost:4000/post/${id}`)
+        fetch(`https://iblog-deepanshus-projects-b59175f2.vercel.app/api/post/${id}`)
             .then(response =>{
                 response.json().then(postInfo => {
                     setPostInfo(postInfo);
@@ -21,7 +21,7 @@ export default function PostPage(){
         ev.preventDefault();
         const text = "Do you want to delete the post?\n if Yes click OK";
         if (window.confirm(text) === true) {
-            fetch('http://localhost:4000/delete/'+id,{
+            fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/delete/'+id,{
                 method: 'DELETE',
                 credentials: 'include'
             }).then(
