@@ -30,7 +30,7 @@ export default function Header(){
 
  if(redirect)
  {
-  <Navigate to={'/}/>
+   return <Navigate to={'/'}/>
  }
 
     return(
