@@ -18,7 +18,7 @@ export default function IndexPage(){
 
     if(userInfo &&userInfo.clicked)
     {
-      fetch(`https://iblog-deepanshus-projects-b59175f2.vercel.app/api/search/?query=${userInfo.search}`).then(response=>{
+      fetch(`https://iblog-deepanshus-projects-b59175f2.vercel.app/api/post/search/?query=${userInfo.search}`).then(response=>{
         response.json().then(posts=>{
           setPosts(posts);
        });
