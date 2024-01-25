@@ -236,7 +236,6 @@ app.delete('/api/delete/:id', async(req,res)=>{
         const parts1 = postDoc.cover.split('/');
         const parts2=parts1[parts1.length-1].split('.');
         const path=parts2[0];
-        console.log(path);
         await cloudinary.v2.uploader.destroy(path, function(error,result) {
              }) 
         await Post.deleteOne({_id:id});
