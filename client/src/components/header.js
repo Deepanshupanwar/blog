@@ -7,7 +7,7 @@ export default function Header(){
   const {userInfo,setUserInfo} =useContext(userContext);
   const [search, setSearch]= useState('');
   useEffect(()=>{
-    fetch('http://localhost:4000/profile',{
+    fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/profile',{
       credentials: 'include',
     }).then(response=>{
       response.json().then(userInfo=>{
@@ -18,7 +18,7 @@ export default function Header(){
 
   function logout(ev){
     ev.preventDefault();
-    fetch('http://localhost:4000/logout',{
+    fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/logout',{
       credentials: 'include',
       method: 'POST',
     });
