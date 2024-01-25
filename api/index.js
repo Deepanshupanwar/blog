@@ -15,7 +15,7 @@ const app= express();
 const salt = bcrypt.genSaltSync(10);
 const secret= 'ygf3rfhr8cwu8h8hc8ehryfgfcruhxw9f9r';
 
-app.use(cors({credentials:true, origin:'http://localhost:3000'}));
+app.use(cors({credentials:true, origin:'https://iblog-dy7q2du3t-deepanshus-projects-b59175f2.vercel.app'}));
 app.use(express.json());
 app.use(cookieparser());
 app.use('/uploads',express.static(__dirname+'/uploads'));
