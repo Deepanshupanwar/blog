@@ -11,7 +11,6 @@ export default function IndexPage(){
         fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/post').then(response=>{
             response.json().then(posts=>{
                setPosts(posts);
-               console.log(posts);
             });
         });
     },[]);
