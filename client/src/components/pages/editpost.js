@@ -35,7 +35,7 @@ export default function EditPost(){
         if(file?.[0])
             data.set('file', file?.[0])
 
-        const response = await fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api:4000/post',{
+        const response = await fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/post',{
             method: 'PUT',
             body: data,
             credentials: 'include'
