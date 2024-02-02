@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState} from "react";
-import { Navigate ,Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { userContext } from "./userContext";
 
 export default function Header(){
@@ -60,7 +60,6 @@ export default function Header(){
           )}
           </div>
         </nav>
-
       </header> 
     );
 }
