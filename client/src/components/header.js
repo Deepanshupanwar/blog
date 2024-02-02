@@ -6,7 +6,7 @@ export default function Header(){
  
   const {userInfo,setUserInfo} =useContext(userContext);
   const [search, setSearch]= useState('');
-  const [redirect, setRedirect] =useState(false);
+
   useEffect(()=>{
     fetch('https://iblog-deepanshus-projects-b59175f2.vercel.app/api/profile',{
       credentials: 'include',
@@ -24,11 +24,9 @@ export default function Header(){
       method: 'POST',
     });
     setUserInfo(null);
-    setRedirect(true);
+
   }
   const username = userInfo?.username ;
-
-
 
     return(
         <header>
