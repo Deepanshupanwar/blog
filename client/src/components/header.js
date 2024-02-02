@@ -62,9 +62,7 @@ export default function Header(){
           )}
           </div>
         </nav>
-{redirect &&(
-       <Navigate to={'/'}/>
- )}
+
       </header> 
     );
 }
