@@ -33,7 +33,7 @@ export default function Header(){
         <Link to="/" className="logo">iBlog</Link>
         <nav className="header-right">
           <div className="search-box">
-          <input className="search" type="text" value={search} placeholder="Enter Blog Title to Search" onChange={ev=>{
+          <input className="search" type="text" value=`${search}` placeholder="Enter Blog Title to Search" onChange={ev=>{
             setSearch(ev.target.value)
           }}/>
           <button className="search-btn" onClick={ev=>{
