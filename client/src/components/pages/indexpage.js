@@ -38,7 +38,7 @@ export default function IndexPage(){
         </>
         <>
           {posts.length === 0 &&
-            (<h2>No post found Refresh again</h2>)
+            (<h2>Loading please wait</h2>)
           }
         </>
       </>
